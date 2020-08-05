@@ -1,0 +1,59 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-05-29 15:12:53
+ * @LastEditTime: 2020-06-02 09:39:49
+ * @LastEditors: Please set LastEditors
+ * @Description: 使用ajax上传对应的产品信息
+ * @FilePath: \CodeSnippet\前端\1.上传图片\index.htm
+-->
+<html>
+
+<head>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.1.1/jquery.js"></script>
+</head>
+
+<body>
+    <input type="file" name="files" id="files" multiple="true" />
+    <button id="submit">上传</button>
+</body>
+<script>
+    $(function () {
+        $("#submit").click(function () {
+            var formData = new FormData();//创建一个表单
+            var files = $("#files")[0].files;//获取所有的图片
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+                formData.append("files", file);
+            }
+            $.ajax({
+                url: 'http://file.nbhooya.com/api/file',
+                dataType: 'json',
+                type: 'POST',
+                async: false,
+                data: formData,
+                /**
+                *必须false才会自动加上正确的Content-Type
+                */
+                contentType: false,
+                /**
+                * 必须false才会避开jQuery对 formdata 的默认处理
+                * XMLHttpRequest会对 formdata 进行正确的处理
+                */
+                processData: false,
+                success: function (data) {
+                    console.log(data);
+                    if (data.status == 'ok') {
+                        alert('上传成功！');
+                    }
+
+                },
+                error: function (response) {
+                    console.log(response);
+                }
+            });
+
+        });
+    })
+</script>
+
+</html>

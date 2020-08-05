@@ -1,0 +1,29 @@
+{
+    "operations": [
+        {
+            "operationId": "6c757bd3-82f0-41f9-bd8c-83472add7fe0",
+            "operationType": "PATCH_ORDERS",
+            "operationStatus": "INCOMPLETE",
+            "submittedDate": "2020-07-20T06:20:54.567Z",
+            "completedDate": "2020-07-20T06:20:54.588Z",
+            "submittedCount": 1,
+            "successCount": 0,
+            "failureCount": 1,
+            "errors": {
+                "failedResources": [
+                    "0047777-200611-2226116890"
+                ],
+                "common": [],
+                "specific": {
+                    "0047777-200611-2226116890": [
+                        {
+                            "errorCode": 530,
+                            "shortMessage": "The refund amount exceeds the original item price",
+                            "longMessage": "The refund amount of -190 for orderItem.orderItemId 66baf13a-4089-4fa4-bcce-9dc8028d1fb0 exceeds the original item price of 189.99."
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}
