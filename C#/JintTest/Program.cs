@@ -8,11 +8,12 @@ namespace JintTest
     {
         static void Main(string[] args)
         {
-            var exp="isExitsFunction('ISBLANK')";
+            var exp="CEILING($buyitnowprice*1.05)";
 
 
             var js= File.ReadAllText(@"E:\MyWork\CodeSnippet\CodeSnippet\C#\JintTest\Ca.js");
-            var add = new Engine()
+            var add = new Engine(options => { options.Strict(false); })
+            .SetValue("$buyitnowprice","54.99")
             .Execute(js)
             .Execute($"function getData(){{ return {exp}}}")
             .GetValue("getData");
